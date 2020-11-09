@@ -11,6 +11,7 @@ import './Dashboard.css'
 export default function Dashboard () {
     const [articles, setArticles ] = useContext(ArticlesContext);
     const [user, setUser] =useState(0)
+
     const getItems = async () => {
         const data = await axios.get(`/api/publicItem`)
         .then(res => {
@@ -21,7 +22,7 @@ export default function Dashboard () {
         console.log(articles);
     }
     useEffect(() => {
-        getItems()
+        getItems();
     }, [user])
     return (
         <div className="dashboard">

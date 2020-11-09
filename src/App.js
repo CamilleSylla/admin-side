@@ -7,28 +7,31 @@ import Inventaire from './components/Pages/Inventaires/Inventaire';
 import Nav from './components/Navigation/Nav';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import { ArticlesProvider } from './context/ArticlesContext';
+import { CommandesProvider } from './context/CommandesContext';
 
 function App() {
   return (
-    <ArticlesProvider>
-    <div className="App">
-      <div className="mainContainer">
-            <Nav/>
+    <CommandesProvider>
+      <ArticlesProvider>
+        <div className="App">
+          <div className="mainContainer">
+            <Nav />
             <Route render={({ location }) => (
-            <Switch location={location}>
-              <Route exact path='/' render={ () => (<Login/>)}/>
-              <Route path='/dashboard' render={({ match: { url } }) => (
-                <>
-                  <Route path={`${url}/`} component={Dashboard} exact />
-                  <Route path={`${url}/commandes`} component={CommandesPages} />
-                  <Route path={`${url}/inventaire`} component={Inventaire} />
-                </>
-              )} />
-            </Switch>
-      )} />
+              <Switch location={location}>
+                <Route exact path='/' render={() => (<Login />)} />
+                <Route path='/dashboard' render={({ match: { url } }) => (
+                  <>
+                    <Route path={`${url}/`} component={Dashboard} exact />
+                    <Route path={`${url}/commandes`} component={CommandesPages} />
+                    <Route path={`${url}/inventaire`} component={Inventaire} />
+                  </>
+                )} />
+              </Switch>
+            )} />
+          </div>
         </div>
-    </div>
-    </ArticlesProvider>
+      </ArticlesProvider>
+    </CommandesProvider>
   );
 }
 
