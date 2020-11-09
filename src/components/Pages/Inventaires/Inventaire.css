@@ -1,0 +1,33 @@
+.inventaireContainer {
+    margin: 0 auto;
+    width: 90%;
+}
+.inventaireContainer input{
+    width: 100%;
+    height: 3vh;
+}
+
+.inventaireBlock {
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+.inventaireGrid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+.modify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modify img {
+    width: 25%;
+}
+.delete img {
+    width: 25%;
+}

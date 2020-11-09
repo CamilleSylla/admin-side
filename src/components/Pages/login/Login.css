@@ -1,0 +1,19 @@
+.loginContainer {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginCenter {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:10px 10px 50px  grey;
+    border-radius: 20px;
+    padding-bottom: 50px;
+
+}
