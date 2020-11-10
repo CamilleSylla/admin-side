@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {storage} from "../../../../firebase/firebase"
 
 
 import './Crud.css'
@@ -15,6 +16,7 @@ export default function Crud() {
         l: "",
         xl: "",
         price: "",
+        image: "",
     });
 
     const nameChange = event => {
@@ -46,6 +48,7 @@ export default function Crud() {
             xl: create.xl,
         }],
         price: create.price,
+        image: create.image
     }
     const onCreate = (e) => {
         axios.post(`/api/produit`, toSend )
@@ -55,6 +58,43 @@ export default function Crud() {
                 console.log(res.data);
             })
     }
+
+    
+
+    const allInputs = {imgUrlm: ''}
+    const [ imageAsFile, setImageAsFile ] = useState('');
+    const [ imageAsUrl, setImageAsUrl ] = useState(allInputs)
+
+
+    const handleImageAsFile = (e) => {
+        const image = e.target.files[0];
+        setImageAsFile( imageFile => (image))
+        console.log(imageAsFile)
+    }
+    const handleFireBaseUpload = e => {
+        e.preventDefault()
+        console.log('start of upload');
+        if (imageAsFile === '') {
+            console.error(`not an image, the image file is a ${typeof(imageAsFile)}`);
+        }
+        const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
+        uploadTask.on('state_changed', 
+        (snapShot) => {
+          //takes a snap shot of the process as it is happening
+          console.log(snapShot)
+        }, (err) => {
+          //catches the errors
+          console.log(err)
+        }, () => {
+          // gets the functions from storage refences the image storage in firebase by the children
+          // gets the download url then sets the image from firebase as the value for the imgUrl key:
+          storage.ref('images').child(imageAsFile.name).getDownloadURL()
+           .then(fireBaseUrl => {
+             setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
+           })
+           console.log(imageAsUrl);
+    })
+}
 
 
     return (
@@ -72,6 +112,11 @@ export default function Crud() {
                     <input type="text" placeholder="XL" />
                     <p>Prix</p>
                     <input type="text" placeholder="Prix" onChange={priceChange} /><br></br>
+                    <form>
+                        <input type="file" onChange={handleImageAsFile}/>
+                        <button onClick={handleFireBaseUpload}> Upload </button>
+                        <img src={imageAsUrl.imgUrl} alt="image tag" />
+                    </form>
                     <button onClick={onCreate}>Ajouter</button>
                 </div>
             </div>
