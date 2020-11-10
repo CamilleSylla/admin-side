@@ -14,14 +14,14 @@ export default function Inventaire() {
     const Articles = () => {
         for (let i = 0; i <= articles.length; i++) {
             const item = articles.map((details, i) => {
-                const { name, category, gender, price, sizes } = details;
+                const { name, category, gender, price, sizes, image } = details;
                 console.log(name);
 
                 return (
                     <div className="inventaireBlock">
                         <div className="inventaireGrid">
                             <div className="inventaireItemImg">
-                                <img src={ID} alt="ItemImg" />
+                                <img src={image} alt="ItemImg" />
                             </div>
                             <h2>{name}</h2>
                             <h3>{category}</h3>

@@ -2,6 +2,12 @@
     margin: 0 auto;
     width: 90%;
 }
+.inventaireItemImg {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
 .inventaireContainer input{
     width: 100%;
     height: 3vh;
