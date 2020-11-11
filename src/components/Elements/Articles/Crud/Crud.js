@@ -5,6 +5,7 @@ import { storage } from "../../../../firebase/firebase"
 
 import './Crud.css'
 
+
 export default function Crud() {
 
     const [create, setCreate] = useState({
@@ -60,6 +61,7 @@ export default function Crud() {
                 console.log(res);
                 console.log(create);
                 console.log(res.data);
+                document.location.reload(true);
             })
     }
     const handleImageAsFile = (e) => {
@@ -94,13 +96,14 @@ export default function Crud() {
 
     return (
         <div className="crudContainer">
+            
             <div className="crudGrid">
                 <div className="crudAdd">
                     <h1>Creer un article</h1>
                     <input placeholder="Nom" onChange={nameChange} />
                     <input type="text" placeholder="Category" onChange={categoryChange} />
                     <input type="text" placeholder="Genre" onChange={genderChange} />
-                    <p> Tailles </p>
+                    <p> Quantité </p>
                     <input type="text" placeholder="S" onChange={sChange} />
                     <input type="text" placeholder="M" />
                     <input type="text" placeholder="L" />
