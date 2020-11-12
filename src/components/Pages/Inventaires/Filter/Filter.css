@@ -1,0 +1,7 @@
+.filterCategory {
+    width: 100%;
+}
+.filterGender {
+    width: 100%;
+    display: flex;
+}
