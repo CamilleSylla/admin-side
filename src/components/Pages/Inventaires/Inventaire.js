@@ -10,13 +10,27 @@ import Modify from './Modify/Modify';
 
 export default function Inventaire() {
     const [articles, setArticles] = useContext(ArticlesContext);
-    const [deleteBtn , setDeleteBtn] = useState({
+    const [deleteBtn, setDeleteBtn] = useState({
         show: false,
     });
-    const Articles = () => {
-        for (let i = 0; i <= articles.length; i++) {
-            const item = articles.map((details, i) => {
+    const [search, setSearch] = useState("")
 
+    const searchChange = (e) => {
+        e.preventDefault();
+        setSearch(e.target.value);
+        console.log(search);
+    }
+    let target = articles
+    if(search.length > 0){
+        target = target.filter((i) =>{
+            return i.name.toLowerCase().match(search)
+        })
+    }
+
+    return (
+        <div className="inventaireContainer">
+            <input type="text" placeholder="Recherche un Article" onChange={searchChange} value={search} />
+            {target.map((details, i) => {
                 return (
                     <div className="inventaireBlock" >
                         <div className="inventaireGrid">
@@ -34,22 +48,15 @@ export default function Inventaire() {
                             </div>
                             <h2> Prix: {details.price}</h2>
                             <div className="modify">
-                                <Modify details={details._id}/>
+                                <Modify details={details._id} />
                             </div>
                             <div className="delete"  >
-                                <DeleteAlert details={details._id} articles={articles}/>
+                                <DeleteAlert details={details._id} articles={articles} />
                             </div>
                         </div>
                     </div>
                 )
-            })
-            return item;
-        }
-    }
-    return (
-        <div className="inventaireContainer">
-            <input type="text" placeholder="Recherche un Article" />
-            {Articles()}
+            })}
         </div>
     )
 }
