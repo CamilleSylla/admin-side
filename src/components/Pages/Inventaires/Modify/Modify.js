@@ -16,7 +16,6 @@ export default function Modify({ details }) {
     const modifyHandler = () => {
         const finder = articles.find(item => item._id === details)
         setTarget(finder);
-        console.log(target);
         setMenu(!menu)
     }
 
@@ -42,12 +41,11 @@ export default function Modify({ details }) {
         setModify({ ...modify, xl: event.target.value })
     }
     
-    const toSend = {
-        ...modify,
-        id: target._id
-    }
     const modifyValidation = async  () => {
-        await axios.patch('/api/produit/update', toSend)
+        await axios.patch('/api/produit/update', {
+            ...modify,
+            id: target._id
+        })
         .then(res => console.log(res))
     }
 
