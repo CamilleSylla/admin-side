@@ -1,0 +1,10 @@
+.deleteContainer {
+    cursor: pointer;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 5px solid red;
+    width: 60%;
+}

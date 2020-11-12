@@ -3,9 +3,10 @@ import React, { useContext, useState } from 'react';
 import './Inventaire.css';
 //assets
 import ID from '../../../assets/IconicDevLatest.svg'
-import Edit from '../../../assets/edit.svg'
+
 import { ArticlesContext } from '../../../context/ArticlesContext';
 import DeleteAlert from './Delete/Delete';
+import Modify from './Modify/Modify';
 
 export default function Inventaire() {
     const [articles, setArticles] = useContext(ArticlesContext);
@@ -33,7 +34,7 @@ export default function Inventaire() {
                             </div>
                             <h2> Prix: {details.price}</h2>
                             <div className="modify">
-                                <img src={Edit} alt="editer" />
+                                <Modify details={details._id}/>
                             </div>
                             <div className="delete"  >
                                 <DeleteAlert details={details._id} articles={articles}/>

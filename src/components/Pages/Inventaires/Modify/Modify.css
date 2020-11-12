@@ -1,0 +1,16 @@
+.modifyMenu {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 2;
+    background-color: red;
+    box-shadow:10px 10px 50px  grey;
+    display: flex;
+    padding-left: 1%;
+    padding-right: 1%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: scroll;
+}
