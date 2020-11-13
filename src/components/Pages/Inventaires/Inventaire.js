@@ -12,28 +12,47 @@ import Filter from './Filter/Filter';
 export default function Inventaire() {
     const [articles, setArticles] = useContext(ArticlesContext);
     const [filter, setFilter] = useState({})
-    const [search, setSearch] = useState("")
-
+    const [search, setSearch] = useState({
+        category: "",
+        gender: "",
+        text: ""
+    })
+    let target = articles
+    //Filters
+        //list
+    const cat = articles.map(a => a.category.toLowerCase());
+    const categoryFilter = ([...new Set(cat)]);
+    const gender = articles.map(a => a.gender.toLowerCase());
+    const genderFilter = ([...new Set(gender)]);
+    
+    
+    
+    //SearchBar
     const searchChange = (e) => {
         e.preventDefault();
-        setSearch(e.target.value);
+        setSearch({...search, text: e.target.value});
     }
-    let target = articles
-    if(search.length > 0){
+    
+    if(search.text){
         target = target.filter((i) =>{
-            return i.name.toLowerCase().match(search.toLowerCase())
+            return i.name.toLowerCase().match(search.text.toLowerCase())
         })
-    }else if (filter.length > 0) {
+    }else if (search.category){
         target = target.filter((i) =>{
-            return i.category.toLowerCase().match(filter.toLowerCase())
+            return i.category.toLowerCase().match(search.category.toLowerCase())
+        })
+    }else if (search.gender){
+        target = target.filter((i) =>{
+            return i.gender.toLowerCase().match(search.gender.toLowerCase())
         })
     }
-    console.log(filter);
+
+
     return (
         <div className="inventaireContainer">
-            <input type="text" placeholder="Recherche un Article" onChange={searchChange} value={search} />
+            <input type="text" placeholder="Recherche un Article" onChange={searchChange} value={search.text} />
             <div className="inventaireFilter">
-                <Filter articles={articles} setFilter={setFilter} filter={filter}/>
+                <Filter filter={filter} setFilter={setSearch} category={categoryFilter}/>
             </div>
             {target.map((details, i) => {
                 return (

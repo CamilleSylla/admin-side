@@ -2,23 +2,32 @@ import React from 'react';
 
 import './Filter.css'
 
-export default function Filter({ articles,  filter, setFilter}) {
+export default function Filter({filter ,category ,setFilter}) {
 
-    const result = articles.map(a => a.category.toLowerCase());
-    const categoryFilter = ([...new Set(result)]);
+    
+    
 
     const Test = (e) => {
         if(e.target.checked === true) {
-            setFilter(e.target.value)
+            setFilter({...filter, category: e.target.value})
         }else if (e.target.checked === false) {
-            setFilter("")
+            setFilter({...filter, category: ""})
         }
     }
+    const Gender = (e) => {
+        if(e.target.checked === true) {
+            setFilter({...filter, gender: e.target.value})
+        }else if (e.target.checked === false) {
+            setFilter({...filter, gender: ""})
+        }
+    }
+
     return (
         <div>
             <div className="filterCategory">
-    <p>{categoryFilter}</p>
-    <input type="checkbox" onChange={Test} value="veste"/>
+    <li>{category}</li>
+    <input type="checkbox" onChange={Test} value="t-shirt"/>
+    <input type="checkbox" onChange={Gender} value="homme"/>
             </div>
 
         </div>
