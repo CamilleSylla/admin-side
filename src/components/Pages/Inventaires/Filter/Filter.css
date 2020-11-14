@@ -1,7 +1,20 @@
+.filterGrid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .filterCategory {
     width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    text-transform: capitalize;
 }
 .filterGender {
     width: 100%;
     display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    text-transform: capitalize;
 }

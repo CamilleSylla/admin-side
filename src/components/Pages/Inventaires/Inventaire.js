@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 
 import './Inventaire.css';
 //assets
-import ID from '../../../assets/IconicDevLatest.svg'
 
 import { ArticlesContext } from '../../../context/ArticlesContext';
 import DeleteAlert from './Delete/Delete';
@@ -11,40 +10,49 @@ import Filter from './Filter/Filter';
 
 export default function Inventaire() {
     const [articles, setArticles] = useContext(ArticlesContext);
-    const [filter, setFilter] = useState({})
-    const [search, setSearch] = useState({
-        category: "",
-        gender: "",
-        text: ""
-    })
-    let target = articles
+    const [filter, setFilter] = useState(articles)
+    const [search, setSearch] = useState({})
     //Filters
-        //list
+        //list for Inputs
     const cat = articles.map(a => a.category.toLowerCase());
     const categoryFilter = ([...new Set(cat)]);
     const gender = articles.map(a => a.gender.toLowerCase());
     const genderFilter = ([...new Set(gender)]);
-    
-    
+        //Event Listenner
+        
+    console.log(search);
     
     //SearchBar
     const searchChange = (e) => {
         e.preventDefault();
-        setSearch({...search, text: e.target.value});
+        const stuff = filter.filter((i) => {
+            return i.name.toLowerCase().match(e.target.value.toLowerCase())
+        })
+        setFilter(stuff)
     }
-    
-    if(search.text){
-        target = target.filter((i) =>{
-            return i.name.toLowerCase().match(search.text.toLowerCase())
-        })
-    }else if (search.category){
-        target = target.filter((i) =>{
-            return i.category.toLowerCase().match(search.category.toLowerCase())
-        })
-    }else if (search.gender){
-        target = target.filter((i) =>{
-            return i.gender.toLowerCase().match(search.gender.toLowerCase())
-        })
+
+
+    const Types = (e) => {
+        if (e.target.checked === true) {
+            const stuff = filter.filter((i) =>{
+                return i.category.toLowerCase().match(e.target.value.toLowerCase())
+            })
+            setFilter(stuff)
+            console.log(articles);
+    } else if (e.target.checked === false) {
+        setFilter(articles)
+    }
+    }
+    const Gender = (e) => {
+        if (e.target.checked === true) {
+            const stuff = filter.filter((i) =>{
+                console.log(i.category, e.target.value);
+                return i.gender.toLowerCase().match(e.target.value.toLowerCase())
+            })
+            setFilter(stuff)
+    } else if (e.target.checked === false) {
+        setFilter(articles)
+    }
     }
 
 
@@ -52,9 +60,13 @@ export default function Inventaire() {
         <div className="inventaireContainer">
             <input type="text" placeholder="Recherche un Article" onChange={searchChange} value={search.text} />
             <div className="inventaireFilter">
-                <Filter filter={filter} setFilter={setSearch} category={categoryFilter}/>
+                <Filter 
+                filter={Types}
+                categorys={categoryFilter}
+                genre={genderFilter}
+                target={Gender}/>
             </div>
-            {target.map((details, i) => {
+            {filter.map((details, i) => {
                 return (
                     <div className="inventaireBlock" >
                         <div className="inventaireGrid">
