@@ -12,6 +12,7 @@ export default function DeleteAlert ({details, articles}) {
         await axios.delete(('/api/produit/delete'), {data : {id: details}})
         .then(res => {
             alert(res.data);
+            
         })
     }
 

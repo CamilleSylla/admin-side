@@ -1,0 +1,11 @@
+.mailContainer{
+    width: 93%;
+    margin: 0 auto;
+    text-align: left;
+}
+.mailContainer th:last-of-type{
+    width: 60%;
+}
+.mailTable{
+    border-bottom: 1px solid black;
+}

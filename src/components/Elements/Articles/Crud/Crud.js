@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { storage } from "../../../../firebase/firebase"
 
 
 import './Crud.css'
+import { ArticlesContext } from '../../../../context/ArticlesContext';
 
 
 export default function Crud() {
-
+    const [articles, setArticles] = useContext(ArticlesContext);
     const [create, setCreate] = useState({
         name: "",
         category: "",
@@ -61,8 +62,8 @@ export default function Crud() {
                 console.log(res);
                 console.log(create);
                 console.log(res.data);
-                document.location.reload(true);
             })
+            document.location.reload(true);
     }
     const handleImageAsFile = (e) => {
         const image = e.target.files[0];
@@ -96,7 +97,7 @@ export default function Crud() {
 
     return (
         <div className="crudContainer">
-            
+
             <div className="crudGrid">
                 <div className="crudAdd">
                     <h1>Creer un article</h1>

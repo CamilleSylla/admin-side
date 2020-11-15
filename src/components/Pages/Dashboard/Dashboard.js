@@ -12,17 +12,13 @@ export default function Dashboard () {
     const [articles, setArticles ] = useContext(ArticlesContext);
     const [user, setUser] =useState(0)
 
-    const getItems = async () => {
-        const data = await axios.get(`/api/publicItem`)
+    
+    useEffect( () => {
+     axios.get(`/api/publicItem`)
         .then(res => {
-            return res.data;
+            setArticles(res.data);
+            console.log(articles);
         })
-        setArticles(data);
-        setUser(1)
-        console.log(articles);
-    }
-    useEffect(() => {
-        getItems();
     }, [user])
     return (
         <div className="dashboard">

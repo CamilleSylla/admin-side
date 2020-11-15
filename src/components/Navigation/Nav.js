@@ -9,7 +9,7 @@ export default function Nav () {
             <NavLink to='/dashboard'>Tableau de bord</NavLink>
             <NavLink to='/dashboard/commandes'>Commandes</NavLink>
             <NavLink to='/dashboard/inventaire'>Inventaires</NavLink>
-            <NavLink to='/dashboard'>Mails</NavLink>
+            <NavLink to='/dashboard/mail'>Mails</NavLink>
         </div>
     )
 }

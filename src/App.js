@@ -8,11 +8,14 @@ import Nav from './components/Navigation/Nav';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import { ArticlesProvider } from './context/ArticlesContext';
 import { CommandesProvider } from './context/CommandesContext';
+import Mail from './components/Pages/Mails/Mail';
+import { MailProvider } from './context/MailContext';
 
 function App() {
   return (
     <CommandesProvider>
       <ArticlesProvider>
+        <MailProvider>
         <div className="App">
           <div className="mainContainer">
             <Nav />
@@ -23,6 +26,7 @@ function App() {
                   <>
                     <Route path={`${url}/`} component={Dashboard} exact />
                     <Route path={`${url}/commandes`} component={CommandesPages} />
+                    <Route path={`${url}/mail`} component={Mail} />
                     <Route path={`${url}/inventaire`} component={Inventaire} />
                   </>
                 )} />
@@ -30,6 +34,7 @@ function App() {
             )} />
           </div>
         </div>
+        </MailProvider>
       </ArticlesProvider>
     </CommandesProvider>
   );

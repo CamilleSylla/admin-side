@@ -2,6 +2,10 @@
     margin: 0 auto;
     width: 90%;
 }
+.inventaireMenu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 .inventaireItemImg {
     display: flex;
     justify-content: center;
