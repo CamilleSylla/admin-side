@@ -13,6 +13,7 @@ export default function Crud() {
         name: "",
         category: "",
         gender: "",
+        brand: "",
         s: "",
         m: "",
         l: "",
@@ -34,10 +35,24 @@ export default function Crud() {
     const genderChange = event => {
         setCreate({ ...create, gender: event.target.value })
     }
+    const brandChange = event => {
+        setCreate({ ...create, brand: event.target.value })
+    }
     const sChange = event => {
         console.log(create.s);
         setCreate({ ...create, s: event.target.value })
-
+    }
+    const mChange = event => {
+        console.log(create.s);
+        setCreate({ ...create, m: event.target.value })
+    }
+    const lChange = event => {
+        console.log(create.s);
+        setCreate({ ...create, l: event.target.value })
+    }
+    const xlChange = event => {
+        console.log(create.s);
+        setCreate({ ...create, xl: event.target.value })
     }
     const priceChange = event => {
         setCreate({ ...create, price: event.target.value })
@@ -46,6 +61,7 @@ export default function Crud() {
         name: create.name,
         category: create.category,
         gender: create.gender,
+        brand: create.brand,
         sizes: [{
             s: create.s,
             m: create.m,
@@ -104,11 +120,12 @@ export default function Crud() {
                     <input placeholder="Nom" onChange={nameChange} />
                     <input type="text" placeholder="Category" onChange={categoryChange} />
                     <input type="text" placeholder="Genre" onChange={genderChange} />
+                    <input type="text" placeholder="Marque" onChange={brandChange} />
                     <p> Quantité </p>
                     <input type="text" placeholder="S" onChange={sChange} />
-                    <input type="text" placeholder="M" />
-                    <input type="text" placeholder="L" />
-                    <input type="text" placeholder="XL" />
+                    <input type="text" placeholder="M" onChange={mChange}/>
+                    <input type="text" placeholder="L" onChange={lChange}/>
+                    <input type="text" placeholder="XL" onChange={xlChange}/>
                     <p>Prix</p>
                     <input type="text" placeholder="Prix" onChange={priceChange} /><br></br>
                     <form>
