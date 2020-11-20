@@ -20,6 +20,7 @@ export default function Crud() {
         xl: "",
         price: "",
         image: "",
+        description: "",
     });
     const allInputs = { imgUrlm: '' }
     const [imageAsFile, setImageAsFile] = useState('');
@@ -57,19 +58,21 @@ export default function Crud() {
     const priceChange = event => {
         setCreate({ ...create, price: event.target.value })
     }
+    const descChange = event => {
+        setCreate({ ...create, description: event.target.value })
+    }
     const toSend = {
         name: create.name,
         category: create.category,
         gender: create.gender,
         brand: create.brand,
-        sizes: [{
             s: create.s,
             m: create.m,
             l: create.l,
             xl: create.xl,
-        }],
         price: create.price,
-        image: imageAsUrl.imgUrl
+        image: imageAsUrl.imgUrl,
+        description: create.description
     }
     const onCreate = (e) => {
         axios.post(`/api/produit`, toSend)
@@ -121,11 +124,13 @@ export default function Crud() {
                     <input type="text" placeholder="Category" onChange={categoryChange} />
                     <input type="text" placeholder="Genre" onChange={genderChange} />
                     <input type="text" placeholder="Marque" onChange={brandChange} />
+                    <textarea onChange={descChange} placeholder="Description du produit"></textarea>
                     <p> Quantité </p>
                     <input type="text" placeholder="S" onChange={sChange} />
                     <input type="text" placeholder="M" onChange={mChange}/>
                     <input type="text" placeholder="L" onChange={lChange}/>
                     <input type="text" placeholder="XL" onChange={xlChange}/>
+                    
                     <p>Prix</p>
                     <input type="text" placeholder="Prix" onChange={priceChange} /><br></br>
                     <form>

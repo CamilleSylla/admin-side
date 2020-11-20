@@ -19,10 +19,10 @@ export default function List({ filter, articles }) {
                             <h3>{details.category}</h3>
                             <h3>{details.gender}</h3>
                             <div>
-                                <p>S :{details.sizes[0].s}</p>
-                                <p>M :{details.sizes[0].m}</p>
-                                <p>L :{details.sizes[0].l}</p>
-                                <p>XL :{details.sizes[0].xl}</p>
+                                <p>S : {details.s}</p>
+                                <p>M : {details.m}</p>
+                                <p>L : {details.l}</p>
+                                <p>XL : {details.xl}</p>
                             </div>
                             <h2> Prix: {details.price}</h2>
                             <div className="modify">
@@ -47,10 +47,10 @@ export default function List({ filter, articles }) {
                             <h3>{details.category}</h3>
                             <h3>{details.gender}</h3>
                             <div>
-                                {/* <p>S :{details.sizes[0].s}</p>
-                                <p>M :{details.sizes[0].m}</p>
-                                <p>L :{details.sizes[0].l}</p>
-                                <p>XL :{details.sizes[0].xl}</p> */}
+                                <p>S : {details.s}</p>
+                                <p>M : {details.m}</p>
+                                <p>L : {details.l}</p>
+                                <p>XL : {details.xl}</p>
                             </div>
                             <h2> Prix: {details.price}</h2>
                             <div className="modify">
