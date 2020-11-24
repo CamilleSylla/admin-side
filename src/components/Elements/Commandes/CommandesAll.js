@@ -1,48 +1,46 @@
-import React from 'react'; 
+import React, { useContext } from 'react';
+import { CommandesContext } from '../../../context/CommandesContext';
 
 import './Commandes.css'
-export default function CommandesAll () {
-
+export default function CommandesAll() {
+    const [orders, setOrders] = useContext(CommandesContext);
     return (
         <div className="commandesContainer">
             <div className="commandesTable">
                 <h1>Dernières commandes</h1>
                 <table>
                     <tr className="tableTitle">
-                        <th>date</th>
+                        <th>Date</th>
                         <th>Nom</th>
-                        <th>adresse</th>
+                        <th>Adresse</th>
                         <th>Montant</th>
-                        <th>produits</th>
+                        <th>Produits</th>
                     </tr>
-                    <tr>
-                        <th>22/11/2020</th>
-                        <th>Jean Dupont</th>
-                        <th>rue de la république</th> 
-                        <th>199.9€</th>
-                        <th>jean Slim</th>
-                    </tr>
-                    <tr>
-                        <th>22/11/2020</th>
-                        <th>Jean Dupont</th>
-                        <th>rue de la république</th> 
-                        <th>199.9€</th>
-                        <th>jean Slim</th>
-                    </tr>
-                    <tr>
-                        <th>22/11/2020</th>
-                        <th>Jean Dupont</th>
-                        <th>rue de la république</th> 
-                        <th>199.9€</th>
-                        <th>jean Slim</th>
-                    </tr>
-                    <tr>
-                        <th>22/11/2020</th>
-                        <th>Jean Dupont</th>
-                        <th>rue de la république</th> 
-                        <th>199.9€</th>
-                        <th>jean Slim</th>
-                    </tr>
+
+                    {orders.map((order, i) => {
+                        return (
+                            <tr>
+                                <th>{new Date (order.date).toLocaleDateString()}</th>
+                        <th>{order.last_name + " " + order.first_name}</th>
+                        <th>{order.adresse + ", " + order.city}</th>
+                        <th>{order.total} €</th>
+                                <th>
+                                     
+                                         {order.articles.map((item, i) => {
+                                             return (
+                                                <tr className="orderProduct">
+                                                 <th> {item.name} </th>
+                                                 <th> { "Taille : " + item.size.toUpperCase()} </th>
+                                                 <th> {"Quantité : " + item.quantity} </th>
+                                                 </tr>
+                                             )
+                                         })}
+                                    
+                                    </th>
+                            </tr>
+                        )
+                    })}
+
                 </table>
             </div>
         </div>

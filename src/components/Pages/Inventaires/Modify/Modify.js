@@ -40,6 +40,9 @@ export default function Modify({ details }) {
     const xlChange = event => {
         setModify({ ...modify, xl: event.target.value })
     }
+    const descChange = event => {
+        setModify({ ...modify, description: event.target.value })
+    }
     
     const modifyValidation = async  () => {
         await axios.patch('/api/produit/update', {
@@ -62,15 +65,17 @@ export default function Modify({ details }) {
             <p>gender :</p>
             <input type="text" placeholder={target.gender} onChange={genderChange}/>
             <p>Quantité taille S :</p>
-            <input type="text" placeholder={target.sizes[0].s} onChange={sChange}/>
+            <input type="text" placeholder={target.s} onChange={sChange}/>
             <p>Quantité taille M :</p>
-            <input type="text" placeholder={target.sizes[0].m}onChange={mChange}/>
+            <input type="text" placeholder={target.m}onChange={mChange}/>
             <p>Quantité taille L :</p>
-            <input type="text" placeholder={target.sizes[0].l}onChange={lChange}/>
+            <input type="text" placeholder={target.l}onChange={lChange}/>
             <p>Quantité taille XL :</p>
-            <input type="text" placeholder={target.sizes[0].xl}onChange={xlChange}/>
+            <input type="text" placeholder={target.xl}onChange={xlChange}/>
             <p>Prix :</p>
             <input type="text" placeholder={target.price + '€'}/>
+            <p>Description :</p>
+            <textarea onChange={descChange} placeholder={target.description}></textarea>
             <button onClick={modifyValidation}> Modifier </button>
         </div>
     }

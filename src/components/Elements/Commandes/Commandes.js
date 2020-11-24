@@ -39,7 +39,7 @@ export default function Commandes() {
                 })
                 return (
                     <tr>
-                        <th>{date}</th>
+                        <th>{new Date (date).toLocaleDateString()}</th>
                         <th>{last_name + " " + first_name}</th>
                         <th>{adresse + ", " + city}</th>
                         <th> {total} €</th>
