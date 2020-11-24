@@ -14,6 +14,7 @@
     height: auto;
 }
 .tableTitle{
+    text-align: center;
     font-size: 1.5vw;
     font-weight: 500;
 }
@@ -25,6 +26,7 @@
 .commandesTable table th{
     display: table-cell;
     justify-content: space-evenly;
+    font-weight: 200;
 }
 .commandesTable p {
     text-align: left;

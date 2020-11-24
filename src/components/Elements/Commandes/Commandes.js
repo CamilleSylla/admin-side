@@ -24,21 +24,33 @@ export default function Commandes() {
     const Orders = () => {
         for (let i = 0; i <= orders.length; i++) {
             const display = orders.map((details, i) => {
-                const { _id, date, name, total, articles } = details;
-                while (i <= orders.length) {
-                    const Articles = articles.map((details, i) => {
-                        return details.name;
-                    })
-                    return (
-                        <tr>
-                            <th>{date}</th>
-                            <th>{name}</th>
-                            <th> 1 rue de la république</th>
-                            <th> {total} €</th>
-                    <th>{Articles}</th>
+                const { _id, date, last_name, first_name, total, articles, adresse, city } = details;
+                const Articles = articles.map(name => {
+                    const render = <tr>{name.name}</tr>
+                    return render
+                })
+                const Taille = articles.map(taille => {
+                    const render = <tr>{taille.size.toUpperCase()}</tr>
+                    return render
+                })
+                const Quantity = articles.map(quantity => {
+                    const render = <tr>{quantity.quantity}</tr>
+                    return render
+                })
+                return (
+                    <tr>
+                        <th>{date}</th>
+                        <th>{last_name + " " + first_name}</th>
+                        <th>{adresse + ", " + city}</th>
+                        <th> {total} €</th>
+                        <tr className="orderProduct">
+                            {Articles}
                         </tr>
-                    )
-                }
+                        <th className="orderProduct">{Taille}</th>
+                        <th className="orderProduct">{Quantity}</th>
+
+                    </tr>
+                )
 
             })
             return display
@@ -50,11 +62,13 @@ export default function Commandes() {
                 <h1>Dernières commandes</h1>
                 <table>
                     <tr className="tableTitle">
-                        <th>date</th>
+                        <th>Date</th>
                         <th>Nom</th>
                         <th>adresse</th>
                         <th>Montant</th>
-                        <th>produits</th>
+                        <th>Produits</th>
+                        <th>Taille</th>
+                        <th>Quantité</th>
                     </tr>
                     {Orders()}
                 </table>
