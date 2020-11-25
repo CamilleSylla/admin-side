@@ -16,12 +16,12 @@ function App() {
     <CommandesProvider>
       <ArticlesProvider>
         <MailProvider>
+        <Route render={({ location }) => (
         <div className="App">
+          <Route exact path='/' render={() => (<Login />)} />
           <div className="mainContainer">
             <Nav />
-            <Route render={({ location }) => (
               <Switch location={location}>
-                <Route exact path='/' render={() => (<Login />)} />
                 <Route path='/dashboard' render={({ match: { url } }) => (
                   <>
                     <Route path={`${url}/`} component={Dashboard} exact />
@@ -31,9 +31,9 @@ function App() {
                   </>
                 )} />
               </Switch>
-            )} />
           </div>
         </div>
+        )} />
         </MailProvider>
       </ArticlesProvider>
     </CommandesProvider>

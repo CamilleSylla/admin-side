@@ -25,14 +25,12 @@ export default function List({ filter, articles }) {
                                 <h3>{details.gender}</h3>
                             </div>
                             <div className="inventaireItemSizes">
-                                <div>
+                                <h3>Tailles</h3>
                                     <p>S : {details.s}</p>
                                     <p>M : {details.m}</p>
-                                </div>
-                                <div>
                                     <p>L : {details.l}</p>
                                     <p>XL : {details.xl}</p>
-                                </div>
+                <p> Unique: {details.unique}</p>
                             </div>
                             <div className="modify">
                                 <Modify details={details._id} />
@@ -66,14 +64,12 @@ export default function List({ filter, articles }) {
                             </div>
 
                             <div className="inventaireItemSizes">
-                                <div>
+                          <h3>Tailles</h3>
                                     <p>S : {details.s}</p>
                                     <p>M : {details.m}</p>
-                                </div>
-                                <div>
                                     <p>L : {details.l}</p>
                                     <p>XL : {details.xl}</p>
-                                </div>
+                                    <p> Unique: {details.unique}</p>
                             </div>
 
                             <div className="modify">

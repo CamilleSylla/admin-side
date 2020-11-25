@@ -56,8 +56,7 @@
 }
 .inventaireItemSizes {
     grid-column: span 2;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 .inventaireItemSizes p{
     margin-right: 3vw;

@@ -20,6 +20,7 @@ export default function Crud() {
         xl: "",
         price: "",
         image: "",
+        unique: "",
         description: "",
     });
     const allInputs = { imgUrlm: '' }
@@ -66,6 +67,9 @@ export default function Crud() {
     const descChange = event => {
         setCreate({ ...create, description: event.target.value })
     }
+    const uniqueChange = event => {
+        setCreate({ ...create, unique: event.target.value })
+    }
     const toSend = {
         name: create.name,
         category: create.category,
@@ -75,6 +79,7 @@ export default function Crud() {
         m: create.m,
         l: create.l,
         xl: create.xl,
+        unique: create.unique,
         price: create.price,
         image: imageAsUrl.imgUrl,
         description: create.description
@@ -157,7 +162,7 @@ export default function Crud() {
                     <input type="text" placeholder="M" onChange={mChange} />
                     <input type="text" placeholder="L" onChange={lChange} />
                     <input type="text" placeholder="XL" onChange={xlChange} />
-
+                    <input type="text" placeholder="Taille unique" onChange={uniqueChange} />Taille unique
                     <p>Prix</p>
                     <input type="text" placeholder="Prix" onChange={priceChange} /><br></br>
                     <form>
