@@ -67,10 +67,14 @@ export default function Inventaire() {
     }
     return (
         <div className="inventaireContainer">
-            <input type="text" placeholder="Recherche un Article" onChange={searchChange} />
-
+            <input 
+            type="text" 
+            placeholder="Recherche un Article" 
+            onChange={searchChange}
+            className="inventaireContainerSearch" 
+            />
+            
             <div className="inventaireMenu">
-                <Crud />
                 <Filter
                     filter={Types}
                     categorys={categoryFilter}
@@ -78,7 +82,7 @@ export default function Inventaire() {
                     target={Gender}
                 />
             </div>
-
+            
             <List filter={filter} articles={articles}/>
 
         </div>

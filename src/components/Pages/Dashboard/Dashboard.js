@@ -25,7 +25,6 @@ export default function Dashboard () {
             <Commandes/>
             <div className="dashboardGrid">
                 <Recettes/>
-                <Crud/>
             </div>
         </div>
     )

@@ -2,9 +2,19 @@
     margin: 0 auto;
     width: 90%;
 }
+.inventaireContainerSearch{
+    background-color: #F8F1EB;
+    border: none;
+    border-bottom: 2px solid #FF9700;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 2vw;
+    margin-top: 2vh;
+    min-height: 5vh;
+}
 .inventaireMenu {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
 }
 .inventaireItemImg {
     display: flex;
@@ -30,6 +40,28 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
 }
+.inventaireItemInfos {
+   grid-column: span 2;
+   text-align: left;
+   margin-left: 2vw;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+.inventaireItemCat{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.inventaireItemSizes {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+}
+.inventaireItemSizes p{
+    margin-right: 3vw;
+}
 .modify {
     display: flex;
     justify-content: center;
@@ -45,4 +77,8 @@
 }
 .delete img {
     width: 50%;
+}
+.inventaireDesc {
+    grid-column: span 8;
+    text-align: justify;
 }

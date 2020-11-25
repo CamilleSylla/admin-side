@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { storage } from "../../../../firebase/firebase"
 
 
 import './Crud.css'
 import { ArticlesContext } from '../../../../context/ArticlesContext';
-
+import Check from '../../../../assets/check.svg'
 
 export default function Crud() {
     const [articles, setArticles] = useContext(ArticlesContext);
@@ -25,6 +25,11 @@ export default function Crud() {
     const allInputs = { imgUrlm: '' }
     const [imageAsFile, setImageAsFile] = useState('');
     const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+    const [imageTransferred, setImageTransferred] = useState({
+        bytes: 0,
+        total: 0,
+        nothing: "L'importation d'une image est obligatoire pour créer un produit"
+    })
 
     const nameChange = event => {
         console.log(create.name);
@@ -66,10 +71,10 @@ export default function Crud() {
         category: create.category,
         gender: create.gender,
         brand: create.brand,
-            s: create.s,
-            m: create.m,
-            l: create.l,
-            xl: create.xl,
+        s: create.s,
+        m: create.m,
+        l: create.l,
+        xl: create.xl,
         price: create.price,
         image: imageAsUrl.imgUrl,
         description: create.description
@@ -82,7 +87,7 @@ export default function Crud() {
                 console.log(create);
                 console.log(res.data);
             })
-            document.location.reload(true);
+        document.location.reload(true);
     }
     const handleImageAsFile = (e) => {
         const image = e.target.files[0];
@@ -100,6 +105,11 @@ export default function Crud() {
             (snapShot) => {
                 //takes a snap shot of the process as it is happening
                 console.log(snapShot)
+                setImageTransferred({
+                    ...imageTransferred, 
+                    bytes: snapShot.bytesTransferred, 
+                    total: snapShot.totalBytes 
+                })
             }, (err) => {
                 //catches the errors
                 console.log(err)
@@ -114,28 +124,46 @@ export default function Crud() {
     }
 
 
+    function Progress () {
+        const Percent = Math.round((imageTransferred.bytes/imageTransferred.total)*100)
+        let Render;
+        if (imageTransferred.total <= 0 ) {
+        Render = <div className="crudWarning">{imageTransferred.nothing}</div>
+
+        } else if (imageTransferred.total > 0 && Percent < 100) {
+            Render = <div>{Percent}%</div>
+
+        } else if (imageTransferred.total > 0 && Percent >= 100) {
+        Render = <div className="crudWarning"> <img src={Check} className="crudCheck"/> {Percent}% </div>
+
+        }
+        return Render
+    }
+        
     return (
         <div className="crudContainer">
 
             <div className="crudGrid">
                 <div className="crudAdd">
                     <h1>Creer un article</h1>
+                    <p> Classification</p>
                     <input placeholder="Nom" onChange={nameChange} />
                     <input type="text" placeholder="Category" onChange={categoryChange} />
                     <input type="text" placeholder="Genre" onChange={genderChange} />
                     <input type="text" placeholder="Marque" onChange={brandChange} />
                     <textarea onChange={descChange} placeholder="Description du produit"></textarea>
-                    <p> Quantité </p>
+                    <p> Stock </p>
                     <input type="text" placeholder="S" onChange={sChange} />
-                    <input type="text" placeholder="M" onChange={mChange}/>
-                    <input type="text" placeholder="L" onChange={lChange}/>
-                    <input type="text" placeholder="XL" onChange={xlChange}/>
-                    
+                    <input type="text" placeholder="M" onChange={mChange} />
+                    <input type="text" placeholder="L" onChange={lChange} />
+                    <input type="text" placeholder="XL" onChange={xlChange} />
+
                     <p>Prix</p>
                     <input type="text" placeholder="Prix" onChange={priceChange} /><br></br>
                     <form>
                         <input type="file" onChange={handleImageAsFile} />
                         <button onClick={handleFireBaseUpload}> Importer </button>
+                        {Progress()}
                     </form>
                     <button onClick={onCreate}>Ajouter</button>
                 </div>

@@ -1,22 +1,24 @@
 .filterGrid{
     display: flex;
-    flex-direction: column;
+    width: 100vh;
     justify-content: center;
     align-items: center;
 }
-
+.filterCatContainer {
+    width: 100vh;
+}
 .filterCategory {
-    width: 100%;
+    text-transform: capitalize;
+    list-style: none;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-    text-transform: capitalize;
+}
+.filterGenderContainer {
+    width: 100vh;
 }
 .filterGender {
-    width: 100%;
+    text-transform: capitalize;
+    list-style: none;
     display: flex;
     justify-content: space-evenly;
-    list-style: none;
-    text-transform: capitalize;
 }

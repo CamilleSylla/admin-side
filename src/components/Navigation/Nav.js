@@ -6,6 +6,7 @@ import Check from '../../assets/checklist.svg'
 import Txt from '../../assets/text.svg'
 import Mail from '../../assets/mail.svg'
 import Home from '../../assets/home.svg'
+import Crud from '../Elements/Articles/Crud/Crud';
 export default function Nav() {
 
     return (
@@ -46,6 +47,7 @@ export default function Nav() {
                 <img src={Mail} />
                 Mails
                 </NavLink>
+                <Crud/>
         </div>
     )
 }

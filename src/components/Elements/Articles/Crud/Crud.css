@@ -7,8 +7,44 @@
     border-left: 1px solid grey;
 }
 .crudGrid {
-    width: 90%;
+    width: 80%;
 }
 .crudAdd{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.crudAdd p{
+    text-align: left;
+}
+.crudAdd input {
+    background-color: transparent;
+    margin-bottom: 2vh;
+    border: none;
+    border-bottom: 2px solid #FF9700;
+    font-family: 'Poppins', sans-serif;
+}
+.crudAdd textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #FF9700;
+    font-family: 'Poppins', sans-serif;
+}
+.crudAdd form input {
+    width: 100%;
+}
+.crudAdd form  {
+    margin-bottom: 5vh;
+}
+.crudAdd button {
+    margin-bottom: 2vh;
+    height: 5vh;
+    font-family: 'Poppins', sans-serif;
+}
+.crudCheck{
+    max-width: 2vw;
+}
+.crudWarning {
+    width: 100%;
+    text-align: center;
 }
