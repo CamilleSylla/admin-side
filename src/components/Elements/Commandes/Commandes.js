@@ -9,7 +9,7 @@ export default function Commandes() {
     const [user, setUser] = useState(0)
 
     const getOrders = async () => {
-        const data = await axios.get(`/api/orders`)
+        const data = await axios.get(`https://ecombackenddemo.herokuapp.com//api/orders`)
             .then(res => {
                 return res.data;
             })

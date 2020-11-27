@@ -83,7 +83,7 @@ export default function Crud() {
         description: create.description
     }
     const onCreate = (e) => {
-        axios.post(`/api/produit`, toSend)
+        axios.post(`https://ecombackenddemo.herokuapp.com/api/produit`, toSend)
         document.location.reload(true);
     }
     const handleImageAsFile = (e) => {
