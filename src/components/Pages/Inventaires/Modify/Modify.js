@@ -45,7 +45,7 @@ export default function Modify({ details }) {
     }
     
     const modifyValidation = async  () => {
-        await axios.patch('https://ecombackenddemo.herokuapp.com//api/produit/update', {
+        await axios.patch('https://ecombackenddemo.herokuapp.com/api/produit/update', {
             ...modify,
             id: target._id
         })

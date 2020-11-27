@@ -6,7 +6,7 @@ export function ArticlesProvider(props) {
     const [articles, setArticles] = useState([]);
 
     async function getArticles () {
-        await axios.get(`https://ecombackenddemo.herokuapp.com//api/publicItem`)
+        await axios.get(`https://ecombackenddemo.herokuapp.com/api/publicItem`)
         .then(res => {
             setArticles(res.data);
         })

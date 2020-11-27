@@ -7,7 +7,7 @@ export function MailProvider(props) {
     const [mail, setMail] = useState([]);
 
     useEffect(() => {
-        Axios.get(`https://ecombackenddemo.herokuapp.com//api/mail/all`)
+        Axios.get(`https://ecombackenddemo.herokuapp.com/api/mail/all`)
             .then(res => {
                 setMail(res.data);
             })
