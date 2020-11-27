@@ -13,7 +13,7 @@ export default function Dashboard () {
 
     
     useEffect( () => {
-     axios.get(`https://ecombackenddemo.herokuapp.com/api/publicItem`)
+     axios.get(`https://iconic-store-serv.herokuapp.com/api/publicItem`)
         .then(res => {
             setArticles(res.data);
             console.log(articles);
