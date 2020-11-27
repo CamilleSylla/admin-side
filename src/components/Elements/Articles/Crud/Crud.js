@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { storage } from "../../../../firebase/firebase"
 
 
 import './Crud.css'
-import { ArticlesContext } from '../../../../context/ArticlesContext';
 import Check from '../../../../assets/check.svg'
 
 export default function Crud() {
-    const [articles, setArticles] = useContext(ArticlesContext);
     const [create, setCreate] = useState({
         name: "",
         category: "",
@@ -86,12 +84,6 @@ export default function Crud() {
     }
     const onCreate = (e) => {
         axios.post(`/api/produit`, toSend)
-            .then(res => {
-                console.log(toSend.image);
-                console.log(res);
-                console.log(create);
-                console.log(res.data);
-            })
         document.location.reload(true);
     }
     const handleImageAsFile = (e) => {
@@ -109,7 +101,6 @@ export default function Crud() {
         uploadTask.on('state_changed',
             (snapShot) => {
                 //takes a snap shot of the process as it is happening
-                console.log(snapShot)
                 setImageTransferred({
                     ...imageTransferred, 
                     bytes: snapShot.bytesTransferred, 
@@ -139,7 +130,7 @@ export default function Crud() {
             Render = <div>{Percent}%</div>
 
         } else if (imageTransferred.total > 0 && Percent >= 100) {
-        Render = <div className="crudWarning"> <img src={Check} className="crudCheck"/> {Percent}% </div>
+        Render = <div className="crudWarning"> <img src={Check} className="crudCheck" alt="ok"/> {Percent}% </div>
 
         }
         return Render

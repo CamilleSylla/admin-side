@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import './Inventaire.css';
 //assets
 
 import { ArticlesContext } from '../../../context/ArticlesContext';
 import Filter from './Filter/Filter';
-import Crud from '../../Elements/Articles/Crud/Crud';
 import List from './List/List';
 
 export default function Inventaire() {

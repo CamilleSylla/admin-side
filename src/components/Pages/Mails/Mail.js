@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { MailContext } from '../../../context/MailContext';
-import axios from 'axios'
 
 import './Mail.css'
 export default function Mail() {

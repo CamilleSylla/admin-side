@@ -15,7 +15,6 @@ export default function Commandes() {
             })
         setOrders(data);
         setUser(1)
-        console.log(orders);
     }
     useEffect(() => {
         getOrders()
@@ -24,7 +23,7 @@ export default function Commandes() {
     const Orders = () => {
         for (let i = 0; i <= orders.length; i++) {
             const display = orders.map((details, i) => {
-                const { _id, date, last_name, first_name, total, articles, adresse, city } = details;
+                const { date, last_name, first_name, total, articles, adresse, city } = details;
                 const Articles = articles.map(name => {
                     const render = <tr>{name.name}</tr>
                     return render

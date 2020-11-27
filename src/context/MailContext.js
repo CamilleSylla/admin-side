@@ -10,9 +10,8 @@ export function MailProvider(props) {
         Axios.get(`/api/mail/all`)
             .then(res => {
                 setMail(res.data);
-                console.log(mail);
             })
-    }, [])
+    },[])
     return (
         <MailContext.Provider value={[mail, setMail]}>
             {props.children}

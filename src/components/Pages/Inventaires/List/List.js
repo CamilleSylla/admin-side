@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DeleteAlert from '../Delete/Delete';
 import Modify from '../Modify/Modify';
 

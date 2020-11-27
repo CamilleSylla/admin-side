@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { ArticlesContext } from '../../../context/ArticlesContext';
-import Crud from '../../Elements/Articles/Crud/Crud';
 import Commandes from '../../Elements/Commandes/Commandes';
 import Recettes from '../../Elements/Recettes/Recette';
 

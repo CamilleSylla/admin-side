@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Nav.css';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Check from '../../assets/checklist.svg'
 import Txt from '../../assets/text.svg'
 import Mail from '../../assets/mail.svg'
