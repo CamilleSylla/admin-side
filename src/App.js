@@ -17,7 +17,6 @@ function App() {
         <MailProvider>
         <Route render={({ location }) => (
         <div className="App">
-          <Route exact path='/' render={() => (<Login />)} />
           <div className="mainContainer">
             <Nav />
               <Switch location={location}>
